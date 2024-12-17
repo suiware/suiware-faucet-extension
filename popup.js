@@ -5,7 +5,7 @@ const validateAddress = (address) => {
   return address.match(/0[xX][a-fA-F0-9]{64}/);
 };
 
-fundButton.addEventListener("click", async () => {
+const processRequest = async () => {
   const network = faucetForm.querySelector(
     'input[name="network"]:checked'
   ).value;
@@ -65,4 +65,14 @@ fundButton.addEventListener("click", async () => {
 
   alert("Funded successfully");
   return;
+};
+
+faucetForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await processRequest();
+});
+
+fundButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+  await processRequest();
 });
