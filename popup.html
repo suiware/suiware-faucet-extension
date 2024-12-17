@@ -8,23 +8,97 @@
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   <title>Suiware Faucet</title>
   <style>
-    /* html,
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+    .faucet-form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
 
-    body {
-      max-width: 390px;
-      max-height: 700px;
-    } */
+    .faucet-form input {
+      padding: 8px 10px;
+      font-size: 16px;
+      border: 1px solid #dddddd;
+      border-right: none;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .faucet-form button {
+      padding: 8px 20px;
+      font-size: 16px;
+      border: none;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: 1px solid #007bff;
+    }
+
+    .faucet-form button:hover {
+      background-color: #0056b3;
+    }
+
+    .network-toggle {
+      display: flex;
+      margin-right: 10px;
+    }
+
+    .network-toggle label {
+      position: relative;
+      display: inline-block;
+      padding: 11px 10px;
+      font-size: 11px;
+      border: 1px solid #007bff;
+      background-color: #fff;
+      color: #007bff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .network-toggle label:first-of-type {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-right: none;
+    }
+
+    .network-toggle label:last-of-type {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .network-toggle input[type="radio"] {
+      display: none;
+    }
+
+    .network-toggle input[type="radio"]:checked+label {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .network-toggle label:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      color: #fff;
+    }
   </style>
 </head>
 
 <body>
-  <input type="text" id="address" placeholder="0x...">
-  <button id="faucet">Faucet</button>
+  <div class="faucet-form">
+    <div class="network-toggle">
+      <input type="radio" id="devnet" name="network" value="devnet" checked>
+      <label for="devnet">Devnet</label>
+      <input type="radio" id="testnet" name="network" value="testnet">
+      <label for="testnet">Testnet</label>
+    </div>
+    <input type="text" class="address" placeholder="0x...">
+    <button class="fund-button" aria-label="Fund">&raquo;</button>
+  </div>
   <script src="popup.js"></script>
 </body>
 
