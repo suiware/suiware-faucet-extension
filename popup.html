@@ -25,6 +25,9 @@
       outline: none;
       box-sizing: border-box;
     }
+    .faucet-form input.address:active, .faucet-form input.address:focus {
+      border-color: #007bff;
+    }
 
     .faucet-form button {
       padding: 8px 20px;
@@ -96,7 +99,7 @@
       <input type="radio" id="testnet" name="network" value="testnet">
       <label for="testnet">testnet</label>
     </div>
-    <input type="text" class="address" placeholder="0x...">
+    <input type="text" class="address" placeholder="0x..." autofocus>
     <button class="fund-button" aria-label="Fund">&raquo;</button>
   </form>
   <script src="popup.js"></script>
