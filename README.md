@@ -1,8 +1,6 @@
-# icearrow-extension
+# Suiware Faucet - Sui Faucet (Chrome Extension)
 
-Chrome Extension for [IceArrow](https://icearrow.xyz).
-
-It's a companion project for [kkomelin/icearrow](https://github.com/kkomelin/icearrow).
+Chrome Extension for getting devnet/testnet SUI tokens.
 
 ## How to install
 

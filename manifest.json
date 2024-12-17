@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "IceArrow",
-  "description": "Secure Secret Sharing on Walrus",
+  "name": "Suiware Faucet",
+  "description": "Sui Faucet Extension by Suiware",
   "version": "0.1.0",
   "icons": {
     "16": "img/favicon-16x16.png",
@@ -10,13 +10,9 @@
   },
   "action": {
     "default_icon": "img/favicon-32x32.png",
-    "default_title": "IceArrow"
-  },
-  "background": {
-    "service_worker": "background.js"
+    "default_title": "Suiware Faucet",
+    "default_popup": "popup.html"
   },
   "permissions": [
-    "windows",
-    "system.display"
   ]
 }
