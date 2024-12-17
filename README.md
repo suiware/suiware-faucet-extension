@@ -1,4 +1,4 @@
-# Suiware Faucet - Sui Faucet (Chrome Extension)
+# Suiware Faucet - Sui Faucet Chrome Extension
 
 Chrome Extension for getting devnet/testnet SUI tokens.
 
