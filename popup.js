@@ -6,7 +6,7 @@ const validateAddress = (address) => {
 };
 
 fundButton.addEventListener("click", async () => {
-  const selectedNetwork = faucetForm.querySelector(
+  const network = faucetForm.querySelector(
     'input[name="network"]:checked'
   ).value;
   const address = faucetForm.querySelector(".address").value;
@@ -16,9 +16,11 @@ fundButton.addEventListener("click", async () => {
     return;
   }
 
-  const response = await fetch(
-    `https://faucet.${selectedNetwork}.sui.io/v1/gas`,
-    {
+  const faucetUrl = `https://faucet.${network}.sui.io/v1/gas`;
+
+  let response;
+  try {
+    response = await fetch(faucetUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,13 +30,39 @@ fundButton.addEventListener("click", async () => {
           recipient: address,
         },
       }),
-    }
-  );
-
-  if (response.ok) {
-    alert("Funded successfully");
+    });
+  } catch (e) {
+    // The faucet responds inconsistently if the limit is reached.
+    // It just causes a CORS error, so we have to work around it.
+    alert(
+      `Failed to fund. Probably too many requests from this client have been sent to the faucet. Please try again later`
+    );
+    console.error(e);
     return;
   }
 
-  alert(`Failed to fund: ${response.statusText}`);
+  if (response.status === 429) {
+    alert(
+      `Too many requests from this client have been sent to the faucet. Please try again later`
+    );
+    return;
+  }
+
+  try {
+    const parsed = await response.json();
+    if (parsed.error) {
+      alert(`Faucet returns error: ${parsed.error}`);
+      console.error(parsed.error);
+      return;
+    }
+  } catch (e) {
+    alert(
+      `Encountered error when parsing response from faucet, error: ${e}, status ${response.status}, response ${response}`
+    );
+    console.error(e);
+    return;
+  }
+
+  alert("Funded successfully");
+  return;
 });
