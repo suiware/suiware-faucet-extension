@@ -1,6 +1,9 @@
 # Suiware Faucet - Sui Faucet Chrome Extension
 
-Chrome Extension for getting devnet/testnet SUI tokens.
+An experimental Chrome Extension for getting devnet/testnet SUI tokens.
+
+> The extension relies on the official Sui faucet API which has its quota and limitations,
+so currently testnet faucet is not working through the extension.
 
 ## How to install
 
