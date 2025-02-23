@@ -16,6 +16,12 @@ const processRequest = async () => {
     return;
   }
 
+   // For the testnet, open the faucet link in a new tab.
+   if (network === 'testnet') {
+    window.open(`https://faucet.sui.io/?address=${address}`, '_blank')
+    return
+  }
+
   const faucetUrl = `https://faucet.${network}.sui.io/v1/gas`;
 
   let response;
